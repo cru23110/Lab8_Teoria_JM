@@ -1,3 +1,7 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from common import profile_function
+
 """
 Ejercicio 3
 Algoritmo:
@@ -6,22 +10,18 @@ for (i=1; i<=n/3; i++)
     print("Sequence")
 Iteraciones ~ (n/3)*(n/4) => O(n^2)
 """
-
-from common import profile_function
-import pandas as pd
-import matplotlib.pyplot as plt
-
 def ex3_algo(n: int) -> int:
     counter = 0
     outer = n // 3
-    j_steps = (n + 3) // 4  # ceil(n/4) sin float
     for _ in range(outer):
-        # no imprimimos, solo contamos para no pagar IO
-        counter += j_steps
+        j = 1
+        while j <= n:
+            counter += 1  # simulación de 'print' sin I/O
+            j += 4
     return counter
 
 def profile_and_save():
-    ns = [1, 10, 100, 1000, 10_000, 100_000, 1_000_000]
+    ns = [20, 40, 80, 160, 320, 640, 1280]
     data = profile_function(ex3_algo, ns)
     df = pd.DataFrame(data, columns=["n", "seconds"])
     df.to_csv("results/ex3/times_ex3.csv", index=False)

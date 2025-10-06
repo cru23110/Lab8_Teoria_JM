@@ -1,3 +1,7 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from common import profile_function
+
 """
 Ejercicio 1
 Algoritmo:
@@ -7,12 +11,6 @@ for (i = n/2; i <= n; i++)
       counter++
 Complejidad teórica esperada: O(n^2 log n)
 """
-
-from math import floor
-from common import profile_function
-import pandas as pd
-import matplotlib.pyplot as plt
-
 def ex1_algo(n: int) -> int:
     counter = 0
     # i va de n//2 a n (inclusive)
@@ -30,7 +28,7 @@ def ex1_algo(n: int) -> int:
     return counter
 
 def profile_and_save():
-    ns = [1, 10, 100, 1000, 10_000, 100_000, 1_000_000]
+    ns = [10, 50, 100, 200, 500, 1000, 2000]
     data = profile_function(ex1_algo, ns)
     # CSV
     df = pd.DataFrame(data, columns=["n", "seconds"])

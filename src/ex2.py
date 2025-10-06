@@ -1,3 +1,7 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from common import profile_function
+
 """
 Ejercicio 2
 Algoritmo:
@@ -7,11 +11,6 @@ for i in 1..n:
     print("Sequence"); break
 El break hace que el interno ejecute 1 vez por i => O(n)
 """
-
-from common import profile_function
-import pandas as pd
-import matplotlib.pyplot as plt
-
 def ex2_algo(n: int) -> int:
     if n <= 1:
         return 0
@@ -23,7 +22,7 @@ def ex2_algo(n: int) -> int:
     return counter
 
 def profile_and_save():
-    ns = [1, 10, 100, 1000, 10_000, 100_000, 1_000_000]
+    ns = [10, 100, 1_000, 10_000, 100_000, 1_000_000]
     data = profile_function(ex2_algo, ns)
     df = pd.DataFrame(data, columns=["n", "seconds"])
     df.to_csv("results/ex2/times_ex2.csv", index=False)
