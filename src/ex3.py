@@ -16,7 +16,7 @@ def ex3_algo(n: int) -> int:
     for _ in range(outer):
         j = 1
         while j <= n:
-            counter += 1  # simulación de 'print' sin I/O
+            counter += 1
             j += 4
     return counter
 

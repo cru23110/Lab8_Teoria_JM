@@ -16,8 +16,6 @@ def ex2_algo(n: int) -> int:
         return 0
     counter = 0
     for i in range(1, n + 1):
-        # bucle interno con break inmediato
-        # simulamos la impresión con un contador para evitar IO costosa
         counter += 1
     return counter
 

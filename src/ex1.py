@@ -13,11 +13,9 @@ Complejidad teórica esperada: O(n^2 log n)
 """
 def ex1_algo(n: int) -> int:
     counter = 0
-    # i va de n//2 a n (inclusive)
     i_start = n // 2
     for i in range(i_start, n + 1):
         j = 1
-        # condición: j + n/2 <= n  <=>  j <= n - n/2
         j_limit = n - (n // 2)
         while j <= j_limit:
             k = 1
@@ -30,10 +28,8 @@ def ex1_algo(n: int) -> int:
 def profile_and_save():
     ns = [10, 50, 100, 200, 500, 1000, 2000]
     data = profile_function(ex1_algo, ns)
-    # CSV
     df = pd.DataFrame(data, columns=["n", "seconds"])
     df.to_csv("results/ex1/times_ex1.csv", index=False)
-    # Plot
     plt.figure()
     plt.plot(df["n"], df["seconds"], marker="o")
     plt.xscale("log")
